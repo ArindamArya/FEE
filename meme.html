@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meme Generator 😂</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:300px;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+h1{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    padding:8px;
+    margin:6px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+.meme{
+    position:relative;
+    width:250px;
+    margin:auto;
+}
+
+.meme img{
+    width:250px;
+    border-radius:8px;
+}
+
+.caption{
+    position:absolute;
+    width:100%;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    text-transform:uppercase;
+    text-align:center;
+    text-shadow:2px 2px 5px black;
+}
+
+.top{
+    top:8px;
+}
+
+.bottom{
+    bottom:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>😂 Meme Generator</h1>
+
+<input type="text" id="topText" placeholder="Enter Top Text">
+
+<input type="text" id="bottomText" placeholder="Enter Bottom Text">
+
+<button onclick="generateMeme()">Generate Meme</button>
+
+<div class="meme">
+    <img id="memeImage"
+         src="https://i.imgflip.com/1bij.jpg"
+         alt="Meme">
+
+    <div id="topCaption" class="caption top"></div>
+    <div id="bottomCaption" class="caption bottom"></div>
+</div>
+
+</div>
+
+<script>
+const memes = [
+    "https://i.imgflip.com/1bij.jpg",
+    "https://i.imgflip.com/26am.jpg",
+    "https://i.imgflip.com/3si4.jpg",
+    "https://i.imgflip.com/30b1gx.jpg",
+    "https://i.imgflip.com/2fm6x.jpg"
+];
+
+function generateMeme(){
+
+    document.getElementById("topCaption").innerText =
+        document.getElementById("topText").value;
+
+    document.getElementById("bottomCaption").innerText =
+        document.getElementById("bottomText").value;
+
+    const random = Math.floor(Math.random() * memes.length);
+
+    document.getElementById("memeImage").src = memes[random];
+}
+</script>
+
+</body>
+</html>
